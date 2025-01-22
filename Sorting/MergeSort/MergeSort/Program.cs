@@ -28,7 +28,7 @@ List<T> Merge<T>(List<T> left, List<T> right) where T : IComparable<T>
 
 void InPlaceMergeSort<T>(List<T> collection, int start, int end) where T : IComparable<T>
 {
-    if (!(start < end)) return;
+    if (start >= end) return;
     var mid = start + (end - start) / 2;
     InPlaceMergeSort(collection, start, mid);
     InPlaceMergeSort(collection, mid + 1, end);
@@ -41,8 +41,9 @@ void InPlaceMerge<T>(List<T> collection, int start, int mid, int end) where T : 
     var temp1 = new T[size1];
     var size2 = end - mid;
     var temp2 = new T[size2];
-    for (var i = start; i < size1; i++) temp1[i] = collection[start + i];
-    for (var j = start; j < size2; j++) temp2[j] = collection[mid + j];
+    // start and (mid + 1) represent the starting in the original array that temp1 and temp2 represent
+    for (var i = 0; i < size1; i++) temp1[i] = collection[start + i];
+    for (var j = 0; j < size2; j++) temp2[j] = collection[mid + 1 + j];
     var temp1Index = 0;
     var temp2Index = 0;
 
