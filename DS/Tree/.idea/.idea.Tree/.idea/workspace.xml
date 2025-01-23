@@ -8,7 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe95b32-7adc-4408-b672-b1a2a25fa4e8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BinaryTree/BinaryTree.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tree/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tree/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BinaryTree/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BinaryTree/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,10 +34,16 @@
     &quot;accountId&quot;: &quot;f121a5ef-a334-425c-9232-d3c8efe80326&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="SWEA" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2s0GHCsikhFxnw2ZbC3LMK09jC3" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -84,7 +91,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1737584988703</updated>
-      <workItem from="1737584989733" duration="4585000" />
+      <workItem from="1737584989733" duration="10349000" />
     </task>
     <servers />
   </component>
