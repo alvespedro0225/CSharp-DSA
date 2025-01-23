@@ -69,15 +69,18 @@ public struct BinaryHeap
 
     private void SiftDown(int index)
     {
-        ArgumentOutOfRangeException.ThrowIfGreaterThan((uint) index,(uint) Count - 1);
-        var indexBiggest = index;
-        var left = LeftIndex(index);
-        var right = RightIndex(index);
-        if (left <= Count - 1 && _heap[left].CompareTo(_heap[indexBiggest]) > 0) indexBiggest = left;
-        if (right <= Count - 1 && _heap[right].CompareTo(_heap[indexBiggest]) > 0) indexBiggest = right;
-        if (indexBiggest == index) return;
-        (_heap[index], _heap[indexBiggest]) = (_heap[indexBiggest], _heap[index]);
-        SiftDown(indexBiggest);
+        while (true)
+        {
+            ArgumentOutOfRangeException.ThrowIfGreaterThan((uint) index,(uint) Count - 1);
+            var indexBiggest = index;
+            var left = LeftIndex(index);
+            var right = RightIndex(index);
+            if (left <= Count - 1 && _heap[left].CompareTo(_heap[indexBiggest]) > 0) indexBiggest = left;
+            if (right <= Count - 1 && _heap[right].CompareTo(_heap[indexBiggest]) > 0) indexBiggest = right;
+            if (indexBiggest == index) return;
+            (_heap[index], _heap[indexBiggest]) = (_heap[indexBiggest], _heap[index]);
+            index = indexBiggest;
+        }
     }
     /// <summary>
     /// Adds an element into it's correct spot in the heap.
