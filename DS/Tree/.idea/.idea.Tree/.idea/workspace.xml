@@ -7,10 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fe95b32-7adc-4408-b672-b1a2a25fa4e8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tree/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tree/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BinaryTree/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BinaryTree/Program.cs" afterDir="false" />
-    </list>
+    <list default="true" id="4fe95b32-7adc-4408-b672-b1a2a25fa4e8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,7 +88,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1737584988703</updated>
-      <workItem from="1737584989733" duration="10349000" />
+      <workItem from="1737584989733" duration="10985000" />
     </task>
     <servers />
   </component>

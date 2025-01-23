@@ -2,11 +2,11 @@ namespace BinaryTree;
 
 public struct BinaryTree<T> where T : IComparable<T>
 {
-    public class Node<TNode> where TNode : IComparable<TNode>
+    internal class Node<TNode> where TNode : IComparable<TNode>
     {
         internal Node<TNode>? Left;
         internal Node<TNode>? Right;
-        public TNode? Value;
+        internal required TNode Data;
     }
     private Node<T>? _root;
 
@@ -17,7 +17,7 @@ public struct BinaryTree<T> where T : IComparable<T>
     {
         Node<T> newNode = new()
         {
-            Value = value,
+            Data = value,
         };
         if (_root == null)
         {
@@ -30,7 +30,7 @@ public struct BinaryTree<T> where T : IComparable<T>
         while (current != null)
         {
             previous = current;
-            switch (newNode.Value.CompareTo(current.Value))
+            switch (newNode.Data.CompareTo(current.Data))
             {
                 case > 0:
                     bigger = true;
@@ -60,7 +60,7 @@ public struct BinaryTree<T> where T : IComparable<T>
     private static void Print(Node<T>? node, string indent = "")
     {
         if (node is null) return;
-        Console.WriteLine($"{indent}{node.Value}");
+        Console.WriteLine($"{indent}{node.Data}");
         Print(node.Left, indent + " ");
         Print(node.Right, indent + " ");
     }
