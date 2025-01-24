@@ -6,15 +6,17 @@ var list = en.ToList();
 Console.WriteLine(IsSorted(list));
 HeapSort(list);
 Console.WriteLine(IsSorted(list));
+return;
 
-
+// Inserts all elements of the array into a heap then extracts them into the array by decreasing index,
+// making the array sorted.
 void HeapSort(IList<int> collection)
 {
     var heap = new BinaryHeap
     {
         MaxSize = collection.Count
     };
-    
+        
     for (var i = 0; i < collection.Count; i++)
     {
         heap.Insert(collection[i]);

@@ -1,6 +1,6 @@
 namespace HeapSort;
 
-struct BinaryHeap
+public struct BinaryHeap
 {
     private readonly int[] _heap;
     private readonly int _maxSize;

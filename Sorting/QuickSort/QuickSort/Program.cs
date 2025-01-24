@@ -1,4 +1,7 @@
-﻿void QuickSort<T>(IList<T> collection, int start, int end) where T : IComparable<T>
+﻿// Divide and conquer algorithm that uses auxiliary function Partition to sort the array while diving it with
+// recursive calls.
+
+void QuickSort<T>(IList<T> collection, int start, int end) where T : IComparable<T>
 {
     if (start >= end) return;
     var mid = Partition(collection, start, end);
@@ -6,6 +9,9 @@
     QuickSort(collection, mid + 1, end);
 }
 
+// Stores the location of the last object bigger than the pivot, then swap places when finds an object lower than
+// the pivot. By the end of the algorithm, the pivot will be in it's right spot of the sub array and the sub array will
+// have all elements smaller or equal to the pivot to it's left and bigger to it's right.
 int Partition<T>(IList<T> collection, int start, int end) where T : IComparable<T>
 {
     var bigger = start - 1;

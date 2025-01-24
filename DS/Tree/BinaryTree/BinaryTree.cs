@@ -1,18 +1,29 @@
 namespace BinaryTree;
-
+/// <summary>
+/// Represents a binary tree, with nodes that store data of <typeparamref name="T"/> type.
+/// </summary>
+/// <typeparam name="T">Any type that implement <see cref="IComparable"/>.</typeparam>
 public struct BinaryTree<T> where T : IComparable<T>
 {
-    internal class Node<TNode> where TNode : IComparable<TNode>
+    private class Node<TNode> where TNode : IComparable<TNode>
     {
-        internal Node<TNode>? Left;
-        internal Node<TNode>? Right;
-        internal required TNode Data;
+        internal Node<TNode>? Left { get; set; }
+        internal Node<TNode>? Right {get; set;}
+        internal required TNode Data { get; set; }
     }
     private Node<T>? _root;
-
-    public int Size => _root == null ? 0 : _Size(_root);
+    /// <summary>
+    /// The amount of nodes the tree currently has.
+    /// </summary>
+    public int Count => _root == null ? 0 : _Count(_root);
+    /// <summary>
+    /// The height of the biggest branch of the tree.
+    /// </summary>
     public int Height => _root == null ? 0 : _Height(_root);
-
+    /// <summary>
+    /// Adds a node to the tree. 
+    /// </summary>
+    /// <param name="value">Value to be stored in the node.</param>
     public void Add(T value)
     {
         Node<T> newNode = new()
@@ -48,6 +59,9 @@ public struct BinaryTree<T> where T : IComparable<T>
         if (bigger) previous!.Right = newNode;
         else previous!.Left = newNode;
     }
+    /// <summary>
+    /// Prints the tree into the terminal.
+    /// </summary>
     public void Print()
     {
         if (_root == null)
@@ -60,8 +74,8 @@ public struct BinaryTree<T> where T : IComparable<T>
     private static void Print(Node<T>? node, string indent = "")
     {
         if (node is null) return;
-        Console.WriteLine($"{indent}{node.Data}");
         Print(node.Left, indent + " ");
+        Console.WriteLine($"{indent}{node.Data}");
         Print(node.Right, indent + " ");
     }
 
@@ -70,9 +84,9 @@ public struct BinaryTree<T> where T : IComparable<T>
         if (node == null) return 0;
         return 1 + Math.Max(_Height(node.Left), _Height(node.Right));
     }
-    private static int _Size(Node<T>? node)
+    private static int _Count(Node<T>? node)
     {
         if (node == null) return 0;
-        return 1 + _Size(node.Left) + _Size(node.Right);
+        return 1 + _Count(node.Left) + _Count(node.Right);
     }
 }

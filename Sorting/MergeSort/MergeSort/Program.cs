@@ -1,4 +1,44 @@
-﻿List<T> MergeSort<T>(List<T> collection) where T : IComparable<T>
+﻿// Divide and conquer algorithm that divides the collection into sub collections within itself, then calls the auxiliary
+// function Merge to merge them, resulting in a sorted array.
+
+void InPlaceMergeSort<T>(List<T> collection, int start, int end) where T : IComparable<T>
+{
+    if (start >= end) return;
+    var mid = start + (end - start) / 2;
+    InPlaceMergeSort(collection, start, mid);
+    InPlaceMergeSort(collection, mid + 1, end);
+    InPlaceMerge(collection, start, mid, end);
+}
+
+// Both sub arrays are already sorted from previous recursive calls, so in order to merge them the algorithm
+// compares it's contents and adds them into the original array.
+// Creates two arrays to store the values of the sub collections within the original collection.
+void InPlaceMerge<T>(List<T> collection, int start, int mid, int end) where T : IComparable<T>
+{
+    var size1 = mid - start + 1;
+    var temp1 = new T[size1];
+    var size2 = end - mid;
+    var temp2 = new T[size2];
+    // start and (mid + 1) represent the starting in the original array that temp1 and temp2 represent
+    for (var i = 0; i < size1; i++) temp1[i] = collection[start + i];
+    for (var j = 0; j < size2; j++) temp2[j] = collection[mid + 1 + j];
+    var temp1Index = 0;
+    var temp2Index = 0;
+
+    while (temp1Index < size1 && temp2Index < size2)
+    {
+        collection[start++] = temp1[temp1Index].CompareTo(temp2[temp2Index]) switch
+        {
+            <= 0 => temp1[temp1Index++],
+            > 0 => temp2[temp2Index++]
+        };
+    }
+
+    while (temp1Index < size1) collection[start++] = temp1[temp1Index++];
+    while (temp2Index < size2) collection[start++] = temp2[temp2Index++];
+}
+
+List<T> MergeSort<T>(List<T> collection) where T : IComparable<T>
 {
     if (collection.Count <= 1) return collection;
     var mid = (collection.Count) / 2;
@@ -24,38 +64,4 @@ List<T> Merge<T>(List<T> left, List<T> right) where T : IComparable<T>
     while (l < left.Count) result.Add(left[l++]);
     while (r < right.Count) result.Add(right[r++]);
     return result;
-}
-
-void InPlaceMergeSort<T>(List<T> collection, int start, int end) where T : IComparable<T>
-{
-    if (start >= end) return;
-    var mid = start + (end - start) / 2;
-    InPlaceMergeSort(collection, start, mid);
-    InPlaceMergeSort(collection, mid + 1, end);
-    InPlaceMerge(collection, start, mid, end);
-}
-
-void InPlaceMerge<T>(List<T> collection, int start, int mid, int end) where T : IComparable<T>
-{
-    var size1 = mid - start + 1;
-    var temp1 = new T[size1];
-    var size2 = end - mid;
-    var temp2 = new T[size2];
-    // start and (mid + 1) represent the starting in the original array that temp1 and temp2 represent
-    for (var i = 0; i < size1; i++) temp1[i] = collection[start + i];
-    for (var j = 0; j < size2; j++) temp2[j] = collection[mid + 1 + j];
-    var temp1Index = 0;
-    var temp2Index = 0;
-
-    while (temp1Index < size1 && temp2Index < size2)
-    {
-        collection[start++] = temp1[temp1Index].CompareTo(temp2[temp2Index]) switch
-        {
-            <= 0 => temp1[temp1Index++],
-            > 0 => temp2[temp2Index++]
-        };
-    }
-
-    while (temp1Index < size1) collection[start++] = temp1[temp1Index++];
-    while (temp2Index < size2) collection[start++] = temp2[temp2Index++];
 }
